@@ -2,261 +2,174 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-/* Lightbox con galleria immagini */
-
 body {
-      font-family: Verdana, sans-serif;
-      margin: 0;
-    }
+  font-family: Helvetica;
+  margin: 0px;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    .row > .column {
-      padding: 0 8px;
-    }
+img {
+  vertical-align: middle;
+  }
 
-    .row:after {
-      content: "";
-      display: table;
-      clear: both;
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 35%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #4a4a49;
+  padding: 2px 16px;
+  color: white;
+  border-radius: 5px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+  margin: 2px;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.4;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+</style>
+<body>
+
+<h2></h2>
+
+<div class="container">
+  <div class="mySlides">
+    <div class="numbertext">1 / 3</div>
+    <img src="https://cdn.pixabay.com/photo/2017/01/12/00/56/mount-velino-1973388_1280.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 3</div>
+    <img src="https://cdn.pixabay.com/photo/2019/03/19/22/06/river-4067147_1280.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 3</div>
+    <img src="https://cdn.pixabay.com/photo/2021/04/18/11/10/mountains-6187994_1280.jpg" style="width:100%">
+  </div>
       
-    }
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
 
-    .column {
-      float: left;
-      width: 25%;
-    }
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
 
-    /* The Modal (background) */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      padding-top: 100px;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: black;
-    }
-
-    /* Modal Content */
-    .modal-content {
-      position: relative;
-      background-color: #fefefe;
-      margin: auto;
-      padding: 0;
-      width: 90%;
-      max-width: 1200px;
-    }
-
-    /* The Close Button */
-    .close {
-      color: white;
-      position: absolute;
-      top: 10px;
-      right: 25px;
-      font-size: 35px;
-      font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: #999;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .mySlides {
-      display: none;
-    }
-
-    .cursor {
-      cursor: pointer
-    }
-
-    /* Next & previous buttons */
-    .prev,
-    .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      padding: 16px;
-      margin-top: -50px;
-      color: white;
-      font-weight: bold;
-      font-size: 20px;
-      transition: 0.6s ease;
-      border-radius: 0 3px 3px 0;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
-    /* Position the "next button" to the right */
-    .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-    }
-
-    /* On hover, add a black background color with a little bit see-through */
-    .prev:hover,
-    .next:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    /* Number text (1/3 etc) */
-    .numbertext {
-      color: #f2f2f2;
-      font-size: 12px;
-      padding: 8px 12px;
-      position: absolute;
-      top: 0;
-    }
-
-    div.row img {
-            border-radius: 6px;
-            }
-    img {
-      margin-bottom: -4px;
-          
-    }
-
-    .demo {
-      opacity: 0.2;
-    }
-
-    .active,
-    .demo:hover {
-      opacity: 1;
-    }
-
-    img.hover-shadow {
-      transition: 0.3s
-    }
-
-    .hover-shadow:hover {
-      opacity: 0.4;
-    }
-    </style>
-    <body>
-
-      
-    
-<h2> </h2> 
-    
-    <div class="row">
-      <div class="column">
-        <img src="https://acchiappamappa.com/wp-content/uploads/2020/07/rocca-calascio-abruzzo-1140x760.jpg" style="width:100%" onclick="openModal(event);currentSlide(event,1)" class="hover-shadow cursor">
-      </div>
-      <div class="column">
-        <img src="https://acchiappamappa.com/wp-content/uploads/2020/07/punta-aderci-costa-trabocchi-1140x641.jpg" style="width:100%" onclick="openModal(event);currentSlide(event,2)" class="hover-shadow cursor">
-      </div>
-      <div class="column">
-        <img src="3.jpg" style="width:100%" onclick="openModal(event);currentSlide(event,3)" class="hover-shadow cursor">
-      </div>
-      <div class="column">
-        <img src="4.jpg" style="width:100%" onclick="openModal(event);currentSlide(event,4)" class="hover-shadow cursor">
-      </div>
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="https://cdn.pixabay.com/photo/2017/01/12/00/56/mount-velino-1973388_1280.jpg" style="width:100%" onclick="currentSlide(1)" alt="Monte Velino, L'Aquila">
     </div>
-
-    <div id="myModal" class="modal">
-      <span class="close cursor" onclick="closeModal(event)">&times;</span>
-      <div class="modal-content">
-
-        <div class="mySlides">
-          <div class="numbertext">1 / 4</div>
-          <img src="https://acchiappamappa.com/wp-content/uploads/2020/07/rocca-calascio-abruzzo-1140x760.jpg" style="width:100%">
-        </div>
-
-        <div class="mySlides">
-          <div class="numbertext">2 / 4</div>
-          <img src="https://acchiappamappa.com/wp-content/uploads/2020/07/punta-aderci-costa-trabocchi-1140x641.jpg" style="width:100%">
-        </div>
-
-        <div class="mySlides">
-          <div class="numbertext">3 / 4</div>
-          <img src="3.jpg" style="width:100%">
-        </div>
-
-        <div class="mySlides">
-          <div class="numbertext">4 / 4</div>
-          <img src="4.jpg" style="width:100%">
-        </div>
-
-        <a class="prev" onclick="plusSlides(event, -1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(event, 1)">&#10095;</a>
-
-        <div class="caption-container">
-          <p id="caption"></p>
-        </div>
-
-
-        <div class="column">
-          <img class="demo cursor" src="https://acchiappamappa.com/wp-content/uploads/2020/07/rocca-calascio-abruzzo-1140x760.jpg" style="width:100%" onclick="currentSlide(event,1)">
-        </div>
-        <div class="column">
-          <img class="demo cursor" src="https://acchiappamappa.com/wp-content/uploads/2020/07/punta-aderci-costa-trabocchi-1140x641.jpg" style="width:100%" onclick="currentSlide(event,2)">
-        </div>
-        <div class="column">
-          <img class="demo cursor" src="3.jpg" style="width:100%" onclick="currentSlide(event, 3)">
-        </div>
-        <div class="column">
-          <img class="demo cursor" src="4.jpg" style="width:100%" onclick="currentSlide(event,4)">
-        </div>
-      </div>
+    <div class="column">
+      <img class="demo cursor" src="https://cdn.pixabay.com/photo/2019/03/19/22/06/river-4067147_1280.jpg" style="width:100%" onclick="currentSlide(2)" alt="Parco Lavino, Scafa">
     </div>
+    <div class="column">
+      <img class="demo cursor" src="https://cdn.pixabay.com/photo/2021/04/18/11/10/mountains-6187994_1280.jpg" style="width:100%" onclick="currentSlide(3)" alt="Campo Imperatore, L'Aquila">
+    </div>
+    </div>
+</div>
 
-    <script>
-    window.addEventListener('click', clickedOutside, false);
-    function clickedOutside(event){
-        event.stopPropagation();
-        closeModal() ;
-    }
-    function openModal(event) {
-       event.stopPropagation();
-        document.getElementById('myModal').style.display = "block";
-    }
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
 
-    function closeModal(event) {
-      document.getElementById('myModal').style.display = "none";
-    }
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
 
-    var slideIndex = 1;
-    showSlides(slideIndex);
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
 
-    function plusSlides(event,n) {
-       event.stopPropagation();
-        showSlides(slideIndex += n);
-    }
-
-    function currentSlide(event,n) {
-        event.stopPropagation();
-        showSlides(slideIndex = n);
-    }
-
-
-    function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("demo");
-      var captionText = document.getElementById("caption");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].className += " active";
-      captionText.innerHTML = dots[slideIndex-1].alt;
-    }
-    </script>
-
-    </body>
-    </html>
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+    
+</body>
+</html>
