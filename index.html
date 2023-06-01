@@ -345,6 +345,24 @@ button:focus {
   transform: scale(1.1);
 }
 
+.fullscreen {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 10px;
+  display: flex;
+}
+.fullscreen a {
+  margin: 0 10px;
+  color: #fff;
+  font-size: 1.8rem;
+  backface-visibility: hidden;
+  transition: all 150ms ease;
+}
+.fullscreen a:hover {
+  transform: scale(1.1);
+}
+	  
 .thumb {
   vertical-align: middle;
   position: absolute;
@@ -408,24 +426,8 @@ button:focus {
   opacity: 1;
   cursor: zoom-in;
 }
-.expand {position: absolute;
-	right: 10px;
-	top: 10px;
-	padding: 10px;
-	display: flex;
-	a {
-		margin: 0 10px;
-		color: #fff;
-		font-size: 1.8rem;
-		backface-visibility: hidden;
-		transition: all 150ms ease;
-		&:hover {
-			transform: scale(1.1);
-		}
-	}
-}	  
 
-  </style>
+ </style>
 
   
 <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-6bce046e7128ddf9391ccf7acbecbf7ce0cbd7b6defbeb2e217a867f51485d25.js"></script>
@@ -557,7 +559,7 @@ button:focus {
   
 </div>
 
-<div class="expand">
+<div class="fullscreen">
   <a href="https://bluflame18.github.io/crispy-winner/" target="_blank"><i class="fas fa-expand"></i></a>
 </div>
   
